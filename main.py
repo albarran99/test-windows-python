@@ -1,4 +1,5 @@
 import random
+import tkinter
 from tkinter import *
 
 ram_num_easy = random.randint(1, 10)
@@ -6,6 +7,8 @@ ram_num_easy = random.randint(1, 10)
 ram_num_medium = random.randint(1, 20)
 
 ram_num_hard = random.randint(1, 50)
+
+show_ram_num = random.randint(1, 100)
 
 num_try = 0
 
@@ -15,15 +18,15 @@ def catch_number_easy():
 
     print(ram_num_easy)
 
-    if int(entry.get()) < ram_num_easy:
+    if int(input_user.get()) < ram_num_easy:
         game_message['text'] = '¡es menor que el numero que buscas!'
         num_try += 1
 
-    elif int(entry.get()) > ram_num_easy:
+    elif int(input_user.get()) > ram_num_easy:
         game_message['text'] = '¡¿a donde vas? ese nuemro es mayor al numero que buscas!'
         num_try += 1
 
-    elif int(entry.get()) == ram_num_easy:
+    elif int(input_user.get()) == ram_num_easy:
         game_message['text'] = '¡Bien, lo atrapaste!, hiciste ' + str(num_try) + ' intentos antes de encontrarlo'
 
 
@@ -32,15 +35,15 @@ def catch_number_medium():
 
     print(ram_num_medium)
 
-    if int(entry.get()) < ram_num_medium:
+    if int(input_user.get()) < ram_num_medium:
         game_message['text'] = '¡es menor que el numero que buscas!'
         num_try += 1
 
-    elif int(entry.get()) > ram_num_medium:
+    elif int(input_user.get()) > ram_num_medium:
         game_message['text'] = '¡¿a donde vas? ese nuemro es mayor al numero que buscas!'
         num_try += 1
 
-    elif int(entry.get()) == ram_num_medium:
+    elif int(input_user.get()) == ram_num_medium:
         game_message['text'] = '¡Bien, lo atrapaste!, hiciste ' + str(num_try) + ' intentos antes de encontrarlo'
 
 
@@ -49,16 +52,16 @@ def catch_number_hard():
 
     print(ram_num_hard)
 
-    if int(entry.get()) < ram_num_hard:
+    if int(input_user.get()) < ram_num_hard:
         game_message['text'] = '¡es menor que el numero que buscas!'
         num_try += 1
 
-    elif int(entry.get()) > ram_num_hard:
+    elif int(input_user.get()) > ram_num_hard:
         game_message['text'] = '¡¿a donde vas? ese nuemro es mayor al numero que buscas!'
 
         num_try += 1
 
-    elif int(entry.get()) == ram_num_hard:
+    elif int(input_user.get()) == ram_num_hard:
         game_message['text'] = '¡Bien, lo atrapaste!, hiciste ' + str(num_try) + ' intentos antes de encontrarlo'
 
 
@@ -70,10 +73,11 @@ window.configure(width=500, height=300)
 # set window background color
 
 window.configure(bg='lightgray')
-entry = Entry()
+input_user = Entry()
 
-entry.configure(font=('Ink Free', 10))
-entry.pack()
+input_user.configure(font=('Ink Free', 10))
+input_user.insert(0, str(show_ram_num))
+input_user.pack()
 
 tutorial = Label(window, text='El modo facil consiste en un numero aleatorio entre 1 y 10,'
                               '\n El modo normal es un numero aleatorio entre 1 y 20\n'
